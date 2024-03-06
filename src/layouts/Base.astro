@@ -5,10 +5,9 @@ import Nav from '../components/Nav.astro';
 
 interface Props {
 	title: string;
-	page: string;
 }
 
-const { title, page } = Astro.props;
+const { title } = Astro.props;
 ---
 
 <!doctype html>
@@ -23,7 +22,6 @@ const { title, page } = Astro.props;
 		<slot name="head"/>
 	</head>
 	<body class="min-h-dvh">
-		<Nav page={page}/>
 		<slot/>
 	</body>
 </html>
