@@ -1,5 +1,5 @@
 ---
-import Layout from "@/layouts/Layout.astro";
+import Base from "@/layouts/Base.astro";
 
 const { cookies, redirect } = Astro;
 
@@ -11,7 +11,7 @@ if (accessToken && refreshToken) {
 }
 ---
 
-<Layout title="Sign in">
+<Base title="Sign in">
   <section class="flex flex-col gap-4 items-center justify-center h-dvh">
 
     <form action="/api/auth/signin" method="post">
@@ -31,4 +31,4 @@ if (accessToken && refreshToken) {
 
   </section>
 
-</Layout>
+</Base>
