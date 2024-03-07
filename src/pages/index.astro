@@ -37,11 +37,11 @@ let { data: records } = await supabase
   .select('*')
   .order('created_at', { ascending: false },)
 
+
 ---
 
 <Base title="Welcome to Astro.">
-  
-  
+
   <Nav>
 
     <div class="group">
@@ -66,17 +66,35 @@ let { data: records } = await supabase
 
     <section class="border border-[#373737] rounded-[16px] py-3">
 
-      <div class="mb-3 px-3">
-
-        <button class="btn btn-sm btn-accent">Crear</button>
+      <div class="mb-3 px-3 flex items-center">
+        <button class="btn btn-sm btn-secondary ml-auto"
+          onclick="createRecord.showModal()"
+        >
+          Crear
+        </button>
       </div>
 
-      <div class="overflow-x-auto">
+      <dialog id="createRecord" class="modal">
+        <div class="modal-box">
+          <h3 class="font-bold text-lg">Create re cord</h3>
+          <div class="grid grid-cols-2 mt-6 join">
+            <input class="input input-bordered input-sm join-item" type="text">
+            <input class="input input-bordered input-sm join-item" type="text">
+            <input class="input input-bordered input-sm" type="text">
+          </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+          <button class="cursor-default">close</button>
+        </form>
+      </dialog>
+
+      <div class="overflow-x-auto small-scroll">
         <table class="table table-pin-rows table-zebra">
           <thead>
             <tr>
               <th>Fecha</th>
               <td>Steam</td>
+              <td>Discord</td>
               <td>Falta/s</td>
               <td>Juego</td>
               <td>Por</td>
@@ -85,10 +103,18 @@ let { data: records } = await supabase
           <tbody>
             { records?.map((rec)=>
               <tr>
-                <th>{rec.created_at}</th> 
-                <th class="tooltip" data-tip={rec.username}>
-                  {rec.user_id}
-                </th> 
+                <th>{rec.created_at}</th>
+                <th>{rec.created_at}</th>
+                <th>
+                  <div class="tooltip" data-tip={rec.username ? rec.username : 'Nombres no registrados'}>
+                    {rec.user_id}
+                  </div>
+                </th>
+                <th>
+                  <div class="tooltip" data-tip={rec.discord ? rec.discord : 'Nombres no registrados'}>
+                    {rec.discord_id}
+                  </div>
+                </th>
                 <th>{rec.sanction}</th> 
                 <th>{rec.game}</th> 
                 <th>{rec.from}</th> 
