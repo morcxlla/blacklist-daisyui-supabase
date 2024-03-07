@@ -1,13 +1,11 @@
-html {
-  ::-webkit-scrollbar {
-		width: 10px;
-    height: 10px;
-		border-radius: 10px;
-	}
-	::-webkit-scrollbar-thumb {
-		border-radius: 10px;
-		background-color: theme("colors.accent");
-		border: 2px solid transparent;
-		background-clip: content-box;
-	}
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+	border-radius: 10px;
+	background-color: theme("colors.accent");
+	border: 2px solid transparent;
+	background-clip: content-box;
 }
