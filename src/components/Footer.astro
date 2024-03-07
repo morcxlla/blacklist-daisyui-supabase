@@ -1,3 +1,36 @@
-<footer>
-  <p>© 2024 Blacklist-v1 | <a class="link link-secondary" href="/copyright">Todos los derechos reservados</a></p>
+---
+import { config } from '@/data/config.ts'
+---
+<footer class="sticky bottom-0 mt-12 pl-8 pr-4 py-4 backdrop-blur shadow-t-lg border-t border-[#111]">
+
+  <div class="flex justify-between items-center max-w-4xl mx-auto">
+
+    <p>© 2024 Morcxlla | <a class="link link-secondary" href="#copyright">Todos los derechos reservados</a>.</p>
+  
+    <!--
+      'px' para mejorar la accesibilidad, se combina
+      con le 'pl/pr' del <footer> para no deformas las
+      dimensiones
+    -->
+    <a class="link link-secondary hover:scale-150 transition px-4" href={config.src} target="_blank">
+      <svg class="size-7" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+      </svg>
+    </a>
+  </div>
+
 </footer>
+
+<section id="copyright" class="max-w-[70ch] mx-auto space-y-5 py-12 max-h-dvh font-serif">
+
+  <p>
+    Los iconos utilizados en este sitio web son propiedad de <a class="link link-secondary" href="https://tabler.io/" target="_blank">Tabler.io</a> y se utilizan bajo su licencia correspondiente. Las marcas y logotipos representados por los iconos de <i>Tabler</i> son propiedad de las mismas.
+  </p>
+  <p>
+    Este sitio web está licenciado bajo los términos de la Licencia MIT. Para más detalles, consulte el archivo <a class="link link-secondary" href={`${config.src}/blob/master/LICENSE`} target="_blank">LICENSE</a> incluido en este proyecto.
+  </p>
+  <p>
+    Cualquier uso no autorizado de los materiales de este sitio web puede estar sujeto a las leyes de derechos de autor y marcas registradas aplicables.
+  </p>
+
+</section>
