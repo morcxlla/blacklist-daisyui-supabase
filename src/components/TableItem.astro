@@ -1,0 +1,80 @@
+---
+// Props + Imports
+interface Props {
+	created_at: string
+	user_id: string
+	username: string[]
+	discord_id: string[]
+	discord: string
+	sanction: string[]
+	game: string
+	from: string
+  creator: string
+}
+
+const { created_at, user_id, username, discord_id, discord, sanction, game, from, creator } = Astro.props;
+
+// Auth + Data
+import { supabase } from "@/lib/supabase";
+const { cookies, redirect } = Astro;
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+if (!accessToken || !refreshToken) {
+  return redirect("/signin");
+}
+const { data } = await supabase.auth.setSession({
+  refresh_token: refreshToken.value,
+  access_token: accessToken.value,
+});
+const email = data?.user?.email;
+
+// Page code
+
+function formatDate(dateString: string): string {
+  // Parse the date in YYYY/MM/DD format
+  const parsedDate = new Date(dateString);
+
+  // Extract date components
+  const d = parsedDate.getDate();
+  const m = parsedDate.getMonth() + 1; // Adding 1 because months are zero-indexed
+  const y = parsedDate.getFullYear();
+
+  // Format the date in DD/MM/YYYY format
+  const formattedDate = `${d < 10 ? '0' : ''}${d}/${m < 10 ? '0' : ''}${m}/${y}`;
+
+  return formattedDate;
+}
+const displayDate = formatDate(created_at);
+---
+
+<tr>
+  <th>
+    {displayDate}
+  </th>
+  <th>
+    <div class="tooltip" data-tip={username ? username : 'Nombres no registrados'}>
+      {user_id}
+    </div>
+  </th>
+  <th>
+    <div class="tooltip" data-tip={discord ? discord : 'Nombres no registrados'}>
+      {discord_id}
+    </div>
+  </th>
+  <th>
+    {sanction}
+  </th> 
+  <th>
+    {game}
+  </th> 
+  <th class="flex items-center gap-2">
+    { creator === email &&
+      <div class="tooltip" data-tip="Creado por ti">
+        <svg class="size-4" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 12a9 9 0 1 0 18 0a9 9 0 0 0 -18 0" /><path d="M12 9h.01" /><path d="M11 12h1v4h1" />
+        </svg>
+      </div>
+    }
+    {from}
+  </th> 
+</tr>

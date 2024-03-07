@@ -2,6 +2,7 @@
 // Imports
 import Base from '../layouts/Base.astro';
 import Nav from '../components/Nav.astro';
+import TableItem from '../components/TableItem.astro';
 import Stats from '../components/Stats.astro';
 
 // Auth
@@ -101,22 +102,17 @@ let { data: records } = await supabase
           </thead> 
           <tbody>
             { records?.map((rec)=>
-              <tr>
-                <th>{rec.created_at}</th>
-                <th>
-                  <div class="tooltip" data-tip={rec.username ? rec.username : 'Nombres no registrados'}>
-                    {rec.user_id}
-                  </div>
-                </th>
-                <th>
-                  <div class="tooltip" data-tip={rec.discord ? rec.discord : 'Nombres no registrados'}>
-                    {rec.discord_id}
-                  </div>
-                </th>
-                <th>{rec.sanction}</th> 
-                <th>{rec.game}</th> 
-                <th>{rec.from}</th> 
-              </tr>
+              <TableItem
+                created_at={rec.created_at}
+                user_id={rec.user_id}
+                username={rec.username}
+                discord_id={rec.discord_id}
+                discord={rec.discord}
+                sanction={rec.sanction}
+                game={rec.game}
+                from={rec.from}
+                creator={rec.creator}
+              />
             )}
           </tbody> 
           <tfoot>
