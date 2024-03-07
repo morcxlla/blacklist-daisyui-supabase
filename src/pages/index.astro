@@ -5,6 +5,7 @@ import Nav from '@/components/Nav.astro';
 import Footer from '@/components/Footer.astro';
 import TableItem from '@/components/TableItem.astro';
 import Stats from '@/components/Stats.astro';
+import Modal from '@/components/Modal.astro';
 
 // Auth
 import { supabase } from "@/lib/supabase";
@@ -53,7 +54,7 @@ let { data: records } = await supabase
         </svg>
       </label>
     </div>
-      
+
   </Nav>
 
   <Stats
@@ -62,12 +63,7 @@ let { data: records } = await supabase
     stat3='213'
   />
 
-	<main class="container mx-auto">
-
-
-    <section>
-
-    </section>
+  <main class="container mx-auto">
 
     <section class="border border-[#373737] rounded-[16px] py-3">
 
@@ -78,25 +74,12 @@ let { data: records } = await supabase
           Crear
         </button>
       </div>
-
-      <dialog id="createRecord" class="modal">
-        <div class="modal-box">
-          <h3 class="font-bold text-lg">Create re cord</h3>
-          <div class="grid grid-cols-2 mt-6 join">
-            <input class="input input-bordered input-sm join-item" type="text">
-            <input class="input input-bordered input-sm join-item" type="text">
-            <input class="input input-bordered input-sm" type="text">
-          </div>
-        </div>
-        <form method="dialog" class="modal-backdrop">
-          <button class="cursor-default">close</button>
-        </form>
-      </dialog>
+      <Modal/>
 
       <div class="overflow-x-auto small-scroll">
         <table class="table table-pin-rows table-zebra">
           <caption class="caption-bottom">
-            
+
           </caption>
           <thead>
             <tr>
@@ -107,7 +90,7 @@ let { data: records } = await supabase
               <td>Juego</td>
               <td>Por</td>
             </tr>
-          </thead> 
+          </thead>
           <tbody>
             { records?.map((rec)=>
               <TableItem
@@ -122,14 +105,14 @@ let { data: records } = await supabase
                 creator={rec.creator}
               />
             )}
-          </tbody> 
+          </tbody>
           <tfoot>
             <tr>
-              <th>Fecha</th> 
-              <td>Steam</td> 
-              <td>Falta/s</td> 
-              <td>Juego</td> 
-              <td>Por</td> 
+              <th>Fecha</th>
+              <td>Steam</td>
+              <td>Falta/s</td>
+              <td>Juego</td>
+              <td>Por</td>
             </tr>
           </tfoot>
         </table>
