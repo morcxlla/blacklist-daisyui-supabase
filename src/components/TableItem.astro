@@ -77,4 +77,20 @@ const displayDate = formatDate(created_at);
     }
     {from}
   </th>
+  <th>
+    {creator === email &&
+      <div class="join">
+        <button class="btn btn-xs btn-neutral join-item"
+        
+        >
+        Editar
+        </button>
+        <button class="btn btn-xs border border-[#373737] join-item"
+        
+        >
+          Eliminar
+        </button>
+      </div>
+    }
+  </th>
 </tr>
