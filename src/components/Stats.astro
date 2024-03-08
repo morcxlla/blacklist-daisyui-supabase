@@ -1,11 +1,42 @@
 ---
-interface Props {
-  stat1: number
-  stat2: number
-  stat3: number
+interface Props { }
+const { } = Astro.props
+
+// Auth
+import { supabase } from "@/lib/supabase";
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (!accessToken || !refreshToken) {
+  return redirect("/signin");
+}
+const { data, error } = await supabase.auth.setSession({
+  refresh_token: refreshToken.value,
+  access_token: accessToken.value,
+});
+if (error) {
+  cookies.delete("sb-access-token", {
+    path: "/",
+  });
+  cookies.delete("sb-refresh-token", {
+    path: "/",
+  });
+  return redirect("/signin");
 }
 
-const { stat1, stat2, stat3 } = Astro.props
+const email = data?.user?.email;
+
+// Page code
+// HAX para evitar conflictos con futuro codigo
+let { data: records_wpcsrncuq } = await supabase
+  .from('records')
+  .select('*')
+
+const stat1 = records_wpcsrncuq?.length;
+
+
 ---
 <div class="container mx-auto flex flex-col md:flex-row gap-4 my-4">
 
@@ -26,7 +57,7 @@ const { stat1, stat2, stat3 } = Astro.props
         <svg class="inline-block w-8 h-8 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
       </div>
       <div class="stat-title">Total Page Views</div>
-      <div class="stat-value">{stat2}</div>
+      <div class="stat-value">stat2</div>
       <!-- <div class="stat-desc">21% more than last month</div> -->
     </div>
   </div>
@@ -37,7 +68,7 @@ const { stat1, stat2, stat3 } = Astro.props
         <svg class="inline-block w-8 h-8 stroke-current" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
       </div>
       <div class="stat-title">Total Page Views</div>
-      <div class="stat-value">{stat3}</div>
+      <div class="stat-value">stat3</div>
       <!-- <div class="stat-desc">21% more than last month</div> -->
     </div>
   </div>
