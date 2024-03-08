@@ -1,10 +1,125 @@
 <dialog id="createRecord" class="modal">
   <div class="modal-box">
-    <h3 class="font-bold text-lg">Create re cord</h3>
-    <div class="grid grid-cols-2 mt-6 join">
-      <input class="input input-bordered input-sm join-item" type="text">
-      <input class="input input-bordered input-sm join-item" type="text">
-      <input class="input input-bordered input-sm" type="text">
+    <h3 class="font-bold text-lg">Create record</h3>
+    <div class="grid grid-cols-2 gap-x-4 gap-y-2 mt-6">
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">
+            Fecha
+          </span>
+        </div>
+        <input class="input input-bordered input-sm w-full"
+          placeholder="Type here"
+          type="text"
+        />
+      </label>
+
+      <div>Espacio 1</div>
+
+      <hr class="col-span-full mt-6 mb-2 border-[#373737]">
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">
+            Steam ID
+          </span>
+          <span class="label-text-alt">
+            ID 64
+          </span>
+        </div>
+        <input class="input input-bordered input-sm w-full"
+          placeholder="Type here"
+          type="text"
+        />
+      </label>
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">
+            Discord ID
+          </span>
+        </div>
+        <input class="input input-bordered input-sm w-full"
+          placeholder="Type here"
+          type="text"
+        />
+      </label>
+
+      <label class="form-control col-span-full w-full">
+        <div class="label">
+          <span class="label-text">
+            Nombres
+          </span>
+          <span class="label-text-alt">
+            Steam
+          </span>
+        </div>
+        <input class="input input-bordered input-sm w-full"
+          placeholder="Type here"
+          type="text"
+        />
+        <div class="label">
+          <span class="label-text-alt">
+            Separa con coma (,) cada nombre
+          </span>
+        </div>
+      </label>
+
+      <label class="form-control col-span-full w-full">
+        <div class="label">
+          <span class="label-text">
+            Nombres
+          </span>
+          <span class="label-text-alt">
+            Discord
+          </span>
+        </div>
+        <input class="input input-bordered input-sm w-full"
+          placeholder="Type here"
+          type="text"
+        />
+        <div class="label">
+          <span class="label-text-alt">
+            Separa con coma (,) cada nombre
+          </span>
+        </div>
+      </label>
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">Juego</span>
+        </div>
+        <input class="input input-bordered input-sm w-full"
+          placeholder="Type here"
+          type="text"
+        />
+        <div class="label">
+          <span class="label-text-alt">
+            Nombre completo (Ej. ARK = Ark Survival Evolved)
+          </span>
+        </div>
+      </label>
+
+      <label class="form-control w-full">
+        <div class="label">
+          <span class="label-text">
+            Server / Comunidad
+          </span>
+        </div>
+        <input class="input input-bordered input-sm w-full"
+          placeholder="Type here"
+          type="text"
+        />
+        <div class="label">
+          <span class="label-text-alt">
+            Nombre de tu servidor o comunidad.
+          </span>
+        </div>
+      </label>
+
+
+
     </div>
   </div>
   <form method="dialog" class="modal-backdrop">
