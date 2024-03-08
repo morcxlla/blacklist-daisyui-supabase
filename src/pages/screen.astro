@@ -1,0 +1,49 @@
+---
+import Base from '@/layouts/Base.astro';
+---
+
+<Base title="Alerta -">
+
+  <main class="container mx-auto flex flex-col justify-center items-center h-dvh">
+
+    <div class="mockup-phone">
+      <div class="camera"></div> 
+      <div class="display">
+        <div class="artboard artboard-demo phone-1 text-center flex flex-col justify-between py-4">
+
+          <div></div>
+
+          <div>
+
+            <p>
+              ¡Esta web aun nos esta disponible para dispositivos moviles!
+            </p>
+            <p class="text-xs mt-2">
+              El dispositivo debe tener un ancho de <span class="">768px</span> o mas.
+            </p>
+          </div>
+
+          <div>
+            <a class="italic link link-secondary" href="/">Volver a intentarlo</a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+	</main>
+  
+</Layout>
+
+<script>
+  const minWidth = 768;
+  window.addEventListener('resize', function() {
+    if (window.innerWidth >= minWidth) {
+      window.location.href = "/";
+    }
+  });
+  // Comprueba el ancho de la ventana al cargar la página
+  if (window.innerWidth >= minWidth) {
+    window.location.href = "/";
+  }
+</script>

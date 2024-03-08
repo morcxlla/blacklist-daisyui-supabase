@@ -42,7 +42,6 @@ let { data: records } = await supabase
   .order('created_at', { ascending: false },)
 
 const stat_1 = records?.length;
-
 ---
 
 <Base title="">
@@ -128,3 +127,16 @@ const stat_1 = records?.length;
   <Footer/>
   
 </Layout>
+
+<script>
+  const minWidth = 767;
+  window.addEventListener('resize', function() {
+    if (window.innerWidth < minWidth) {
+      window.location.href = "/screen";
+    }
+  });
+  // Comprueba el ancho de la ventana al cargar la página
+  if (window.innerWidth < minWidth) {
+    window.location.href = "/screen";
+  }
+</script>
